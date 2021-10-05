@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "747861623391",
+    "project_id": "simplepushnotification-fea4c",
+    "storage_bucket": "simplepushnotification-fea4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747861623391:android:cf392b1d7153e54349d1ea",
+        "android_client_info": {
+          "package_name": "com.zen4r17.android.simplepushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747861623391-89toqt4dnjbqs058jqmi9786t2r2an0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH2ZaPsPCtR44rqg3oEgYyRwVzywTunIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747861623391-89toqt4dnjbqs058jqmi9786t2r2an0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
