@@ -6,3 +6,5 @@ Notif di Emulator & Real Device belum muncul
 
 ![Screenshot (58)](https://user-images.githubusercontent.com/70325408/136055249-afe9326c-ef02-4d11-be8a-ad76074b6ed6.png)
 
+
+Backend: https://github.com/loxave/tugas21-backend
