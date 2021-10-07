@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Send"
+        android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        tools:hint="Enter message"
+        android:hint="Enter message"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/btnSend"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,21 +32,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        tools:text="Enter Token"
+        android:hint="Enter Token"
         android:inputType="textPersonName"
-        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/btnSend"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etMessage"
-        tools:hint="Enter Token" />
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        tools:hint="Enter Title"
+        android:hint="Enter Title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etMessage"
         app:layout_constraintEnd_toStartOf="@+id/btnSend"

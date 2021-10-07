@@ -13,9 +13,12 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random
@@ -23,6 +26,15 @@ import kotlin.random.Random
 private const val CHANNEL_ID = "My_Channel"
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    val TAG = "PushNotifService"
+    lateinit var name: String
+    private var broadcaster: LocalBroadcastManager? = null
+
+    override fun onCreate() {
+        broadcaster = LocalBroadcastManager.getInstance(this)
+    }
+
 
     companion object {
         var sharedPref: SharedPreferences? = null
@@ -38,12 +50,29 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
     }
 
-    val TAG = "FirebaseMessagingService"
+    private fun handleMessage(remoteMessage: RemoteMessage) {
+
+        val handler = Handler(Looper.getMainLooper())
+        handler.post(Runnable {
+            val intent = Intent("MyData")
+            remoteMessage.notification?.let {
+
+                intent.putExtra("message", it.body)
+                intent.putExtra("title", it.body)
+//                intent.putExtra("id", remoteMessage.data["id"])
+//                intent.putExtra("action", remoteMessage.data["action"])
+                broadcaster?.sendBroadcast(intent)
+
+            }
+        })
+    }
 
     @SuppressLint("LongLogTag")
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         Log.d(TAG, "Dikirim dari: ${remoteMessage.from}")
+        handleMessage(remoteMessage)
+
 
         if (remoteMessage.notification != null) {
             showNotification(remoteMessage.notification?.title, remoteMessage.notification?.body)
@@ -114,14 +143,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //        val refreshToken = FirebaseMessaging.getInstance().token
 //
 //        Log.d("refresh token", refreshToken)
-        Log.d(ContentValues.TAG, "Refreshed token: $newToken")
+        Log.d(TAG, "Refreshed token: $newToken")
 
 
-        sendRegistrationToServer(newToken)
+        sendTokenToServer(newToken)
     }
 
-    private fun sendRegistrationToServer(token: String?) {
+    private fun sendTokenToServer(token: String?) {
 
-        Log.d(ContentValues.TAG, "sendRegistrationTokenToServer($token)")
+        Log.d(TAG, "sendTokenToServer: $token")
     }
 }
